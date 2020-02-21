@@ -4,6 +4,7 @@
 // @version      0.1
 // @author       SteveR
 // @match        https://app.activecollab.com/207970/my-time
+// @grant        none
 // ==/UserScript==
 
 /* Hiding "jQuery is not defined" errors in Tampermonkey
@@ -45,7 +46,7 @@ function waitUntilElementLoaded(selector) {
 var css = `
 .tracking_objects_list_group h2 {
     background: black;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
     padding: .5em 1em;
     color: white;
 }
@@ -56,7 +57,38 @@ var css = `
 .tracking_objects_list_group h2 span::after {
     content: " hrs";
     font-size: .75em;
-}`,
+}
+#main_page_wrapper #my_time_view .tracking_object_description {
+    padding: .25em 0;
+}
+
+#main_page_wrapper #my_time_view .tracking_object_author {
+    display: none;
+}
+
+#main_page_wrapper #my_time_view .tracking_object_project {
+    width: 30% !important;
+    color: black !important;
+}
+#main_page_wrapper #my_time_view .tracking_object_details {
+    padding: .5em 0;
+    color: black !important;
+    width: 35% !important;
+}
+#main_page_wrapper #my_time_view .tracking_object_context {
+    width: 15% !important;
+}
+#main_page_wrapper #my_time_view .tracking_object_status.billable {
+    color: green;
+    font-weight: bold;
+}
+#main_page_wrapper #my_time_view .tracking_object_status.non-billable {
+    color: black;
+}
+#main_page_wrapper #my_time_view .tracking_object_value {
+    width: 5% !important;
+}
+`,
     head = document.head || document.getElementsByTagName('head')[0],
     style = document.createElement('style');
 
@@ -100,6 +132,16 @@ function reCalc(){
         }else {
             $( this ).find( 'h2' ).append( '<span class="total">' + groupTotal + '</span>');
         }
+
+        /* Also add a class of "non-billable" where appropriate */
+        $( this ).find( '.tracking_object_status' ).each( function(){
+            console.log( $( this ).text() );
+            if( 'Billable' == $( this ).text() ){
+                $( this ).addClass( 'billable' );
+            }else if( 'Not billable' == $( this ).text() ){
+                $( this ).addClass( 'non-billable' );
+            }
+        } );
 
     } );
 }
