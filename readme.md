@@ -2,6 +2,8 @@
 
 This works when you visit the page from a bookmark (or via refresh upon arrival). It recalculates the totals after you use the "New time record" button on the [My Time](https://app.activecollab.com/207970/my-time) page.
 
+*Note*: You must be on the LIST view of the [My Time](https://app.activecollab.com/207970/my-time) page (not the Table view).
+
 Take a look at the [issues](https://github.com/sr4136/activecollab-totals/issues) for the known issues.
 
 Steps:
@@ -12,3 +14,6 @@ Steps:
 1. Paste into that window and hit ⌘ + S to save the script. 
 1. Reload the [page](https://app.activecollab.com/207970/my-time) to see the totals
 1. Optional: edit that TamperMonkey file to adjust the CSS colors that you like better.
+
+
+![Modified ActiveCollab Screenshot](https://raw.githubusercontent.com/sr4136/activecollab-totals/master/screenshot.png)
