@@ -1,7 +1,9 @@
 ### ActiveCollab Hours total for the [My Time](https://app.activecollab.com/207970/my-time) page.
 
 This works when you visit the page from a bookmark.
+
 It also will recalculate the totals after you use the "New time record" button on this page.
+
 Take a look at the [issues](https://github.com/sr4136/activecollab-totals/issues) for the known issues.
 
 Steps:
